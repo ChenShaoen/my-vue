@@ -1,29 +1,52 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import { RouterView } from 'vue-router';
+import background from '@/assets/Image/2.jpg';
+
+export default {
+  // 元件宣告
+  components: {
+    RouterView
+  },
+  data(){
+    return {
+      background,
+    }
+  }
+}
 </script>
 
 <template>
+  <!-- 觀察你的設計稿 把共用的部分放在此頁面 -->
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+    <a href="/">home</a>
+    <a href="/about">about</a>
+    <a href="/calc">calc</a>
+    <a href="/todolist">todolist</a>
+    <a href="/picupload">picupload</a>
+    <a href="/weather">weather</a>
+    <!-- <RouterLink to="/">home</RouterLink>
+    <RouterLink to="/about">about</RouterLink>
+    <RouterLink to="/calc">calc</RouterLink> -->
+    
   </header>
+  <main :style="{backgroundImage: `url(${background})`, fontSize: '50px'}">
+    <RouterView />
 
-  <RouterView />
+  </main>
+  <footer>
+  </footer>
+
 </template>
 
+<!-- scoped style只影響這支vue -->
 <style scoped>
 header {
   line-height: 1.5;
+  min-height: 50px;
   max-height: 100vh;
+  border-radius: 5px;
+  background-color: black;
+  color: wheat;
 }
 
 .logo {
@@ -55,7 +78,11 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
-
+main{
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgb(252, 251, 255);
+}
 @media (min-width: 1024px) {
   header {
     display: flex;
